@@ -7,9 +7,17 @@ function App() {
     <div>
       <h1>Contract Management Platform</h1>
 
-      <Blueprints />
-      <CreateContract />
-      <Dashboard />
+      <div className="section">
+        <Blueprints />
+      </div>
+
+      <div className="section">
+        <CreateContract />
+      </div>
+
+      <div className="section">
+        <Dashboard />
+      </div>
     </div>
   );
 }

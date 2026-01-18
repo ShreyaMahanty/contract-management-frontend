@@ -1,26 +1,29 @@
-body {
-  font-family: Arial, sans-serif;
+.section {
+  border: 1px solid #ddd;
   padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  background-color: #fafafa;
 }
 
-h1, h2 {
-  color: #333;
+.section h2 {
+  margin-top: 0;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.section button {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
 }
 
-th {
-  background-color: #f2f2f2;
-}
-
-button {
-  padding: 6px 10px;
-  cursor: pointer;
-}
-
-select {
-  padding: 6px;
-}
+.status.created { background-color: gray; }
+.status.approved { background-color: blue; }
+.status.sent { background-color: orange; }
+.status.signed { background-color: green; }
+.status.locked { background-color: black; }
+.status.revoked { background-color: red; }

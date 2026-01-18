@@ -4,21 +4,28 @@ function Blueprints() {
   const [blueprintName, setBlueprintName] = useState("");
   const [fields, setFields] = useState([]);
 
-  // 🔹 Field add karne ka function
-  function addField() {
-    setFields([...fields, { type: "text", label: "New Field" }]);
+  function addField(type) {
+    setFields([
+      ...fields,
+      {
+        type,
+        label: `${type} Field`,
+      },
+    ]);
   }
 
-  // 🔹 STEP 8: YAHI blueprint save hoga
+  function updateLabel(index, value) {
+    const updated = [...fields];
+    updated[index].label = value;
+    setFields(updated);
+  }
+
   function saveBlueprint() {
     const blueprint = {
       name: blueprintName,
-      fields: fields,
+      fields,
     };
-
-    // localStorage me save
     localStorage.setItem("blueprint", JSON.stringify(blueprint));
-
     alert("Blueprint saved successfully!");
   }
 
@@ -27,7 +34,6 @@ function Blueprints() {
       <h2>Create Blueprint</h2>
 
       <input
-        type="text"
         placeholder="Blueprint Name"
         value={blueprintName}
         onChange={(e) => setBlueprintName(e.target.value)}
@@ -35,15 +41,22 @@ function Blueprints() {
 
       <br /><br />
 
-      <button onClick={addField}>Add Text Field</button>
+      <button onClick={() => addField("text")}>Add Text</button>
+      <button onClick={() => addField("date")}>Add Date</button>
+      <button onClick={() => addField("checkbox")}>Add Checkbox</button>
 
       <ul>
         {fields.map((field, index) => (
-          <li key={index}>{field.label}</li>
+          <li key={index}>
+            <strong>{field.type}</strong>{" "}
+            <input
+              value={field.label}
+              onChange={(e) => updateLabel(index, e.target.value)}
+            />
+          </li>
         ))}
       </ul>
 
-      {/* 🔹 SAVE BUTTON */}
       <button onClick={saveBlueprint}>Save Blueprint</button>
     </div>
   );

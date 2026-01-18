@@ -23,6 +23,13 @@ The project demonstrates **component-based architecture**, **state management**,
 
 ---
 
+## Assumptions & Limitations
+- Only one blueprint is handled for simplicity
+- Data is persisted using browser localStorage
+- UI focuses on functionality over visual polish
+
+---
+
 ## Core Features
 
 ### 1. Blueprint Management
